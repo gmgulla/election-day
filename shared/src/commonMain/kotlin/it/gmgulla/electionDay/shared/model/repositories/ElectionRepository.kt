@@ -2,13 +2,16 @@ package it.gmgulla.electionDay.shared.model.repositories
 
 import it.gmgulla.electionDay.shared.model.entities.Election
 import it.gmgulla.electionDay.shared.model.sqldelight.Database
+import it.gmgulla.electionDay.shared.model.sqldelight.Mapper
 
 class ElectionRepository : Repository<Election> {
 
     private val electionInquirer = Database.getInstance().electionQueries
 
     override fun add(entity: Election) {
-        TODO("Not yet implemented")
+        electionInquirer.transaction {
+            electionInquirer.insertElection(entity.region, entity.office, entity.year.toString())
+        }
     }
 
     override fun getById(id: Int): Election {
@@ -16,7 +19,13 @@ class ElectionRepository : Repository<Election> {
     }
 
     fun getByValues(region: String, office: String, year: Int): Election {
-        TODO()
+        return electionInquirer.transactionWithResult {
+            val election = electionInquirer.selectElectionByValues(
+                region, office, year.toString(),
+                Mapper::mapElection
+            ).executeAsOneOrNull()
+            election ?: throw EntityNotFoundException(Election::class.simpleName!!)
+        }
     }
 
     override fun getAll(): List<Election> {

@@ -1,6 +1,7 @@
 package it.gmgulla.electionDay.shared.model.sqldelight
 
 import it.gmgulla.electionDay.shared.model.entities.Candidate
+import it.gmgulla.electionDay.shared.model.entities.Election
 import it.gmgulla.electionDay.shared.model.entities.Party
 import it.gmgulla.electionDay.shared.model.repositories.PartyRepository
 
@@ -14,6 +15,9 @@ internal object Mapper {
         val partyRepo = PartyRepository()
         val party = partyRepo.getById(partyId)
         return Candidate(id, name, party)
+    }
 
+    internal fun mapElection(id: Int, region: String, office: String, year: String): Election {
+        return Election(id, region, office, year.toInt())
     }
 }

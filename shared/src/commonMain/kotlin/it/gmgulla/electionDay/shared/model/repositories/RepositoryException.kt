@@ -4,12 +4,15 @@ internal open class RepositoryException : RuntimeException()
 
 internal class EntityNotFoundException(
     private val dataTypeName: String,
-    private val memberTypeName: String,
-    private val id: Any
+    private val memberTypeName: String? = null,
+    private val id: Any? = null
 ) : RepositoryException() {
 
     override val message: String? = """
-            Entity not found. $dataTypeName with ($memberTypeName $id) does not exist.
+            Entity not found. ${
+                if (memberTypeName == null) ""
+                else "$dataTypeName with $memberTypeName = $id does not exist"
+            }.
         """.trimIndent()
 }
 
