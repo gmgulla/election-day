@@ -16,7 +16,7 @@ class ElectionRepository : Repository<Election> {
     }
 
     fun getByValues(region: String, office: String, year: Int): Election {
-
+        TODO()
     }
 
     override fun getAll(): List<Election> {
