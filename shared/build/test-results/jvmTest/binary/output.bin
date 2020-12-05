@@ -1,2 +1,0 @@
-\candidateToAdd =  Candidate(id=-2147483648, name=Trump, party=Party(id=5, name=Republican))
-Lcandidate = Candidate(id=5, name=Trump, party=Party(id=5, name=Republican))
