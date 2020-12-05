@@ -1,0 +1,38 @@
+CREATE TABLE CandidateEntity (
+    id INTEGER AS Int NOT NULL PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    party INTEGER AS Int NOT NULL,
+    FOREIGN KEY (party) REFERENCES PartyEntity(id) ON DELETE CASCADE
+);
+
+insertCandidate:
+INSERT INTO CandidateEntity(name, party)
+VALUES(?, ?);
+
+selectAllCandidate:
+SELECT * FROM CandidateEntity;
+
+selectCandidateById:
+SELECT * FROM CandidateEntity
+WHERE id = ?;
+
+selectCandidatesByName:
+SELECT * FROM CandidateEntity
+WHERE name = ?;
+
+selectCandidatesByParty:
+SELECT * FROM CandidateEntity
+WHERE party = ?;
+
+updateCandidate:
+UPDATE CandidateEntity
+SET name = ?, party = ?
+WHERE id = ?;
+
+deleteAllCandidates:
+DELETE FROM CandidateEntity;
+
+deleteCandidateById:
+DELETE FROM CandidateEntity
+WHERE id = ?;
+

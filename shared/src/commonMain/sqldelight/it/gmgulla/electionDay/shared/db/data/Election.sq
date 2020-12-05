@@ -1,0 +1,27 @@
+CREATE TABLE ElectionEntity(
+    id INTEGER AS Int NOT NULL PRIMARY KEY AUTOINCREMENT,
+    region TEXT NOT NULL,
+    office TEXT NOT NULL,
+    year TEXT NOT NULL,
+    UNIQUE (region, office, year)
+);
+
+insertElection:
+INSERT INTO ElectionEntity(region, office, year)
+VALUES(?, ?, ?);
+
+selectAllElections:
+SELECT * FROM ElectionEntity;
+
+selectElectionByValues:
+SELECT * FROM ElectionEntity
+WHERE region = ? AND office = ? AND year = ?;
+
+deleteAllElections:
+DELETE FROM ElectionEntity;
+
+deleteElectionById:
+DELETE FROM ElectionEntity
+WHERE id = ?;
+
+
