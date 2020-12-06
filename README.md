@@ -22,6 +22,12 @@ Election Day is a [Kotlin Multiplatform](https://kotlinlang.org/docs/reference/m
 
 
 
+## Status 
+
+The project development is *in progress*. `master` branch is neither stable nor working.
+
+
+
 ## Contact
 
 Created by [Gian Marco Gullà](mailto:gullagianmarco@gmail.com) - feel free to contact me!
